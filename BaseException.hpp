@@ -9,7 +9,7 @@ public:
     // menuliskan pesan kesalahan ke stdout
     virtual string returnMessage() = 0;
 };
-class SyntaxException : public Exception{
+class SyntaxException : public BaseException{
     public:
         string returnMessage(){
             return "Syntax Error";
