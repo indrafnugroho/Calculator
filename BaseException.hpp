@@ -7,7 +7,7 @@ using namespace std;
 class BaseException {
 public:
     // menuliskan pesan kesalahan ke stdout
-    virtual String returnMessage() = 0;
+    virtual string returnMessage() = 0;
 };
 
 #endif
