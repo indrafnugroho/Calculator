@@ -10,8 +10,9 @@ public:
     virtual string returnMessage() = 0;
 };
 class SyntaxException : public Exception{
-    string returnMessage(){
-        return "Syntax Error";
-    }
+    public:
+        string returnMessage(){
+            return "Syntax Error";
+        }
 };
 #endif
