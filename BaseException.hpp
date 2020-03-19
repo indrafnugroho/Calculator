@@ -9,5 +9,9 @@ public:
     // menuliskan pesan kesalahan ke stdout
     virtual string returnMessage() = 0;
 };
-
+class SyntaxException : public Exception{
+    string returnMessage(){
+        return "Syntax Error";
+    }
+};
 #endif
