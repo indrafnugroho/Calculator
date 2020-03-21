@@ -121,13 +121,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalcButton.cpp" />
+    <ClCompile Include="CalcMemory.cpp" />
+    <ClCompile Include="Expression.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Parser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalcButton.h" />
+    <ClInclude Include="CalcMemory.h" />
+    <ClInclude Include="Expression.hpp" />
     <ClInclude Include="GUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Parser.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GUI.resx">

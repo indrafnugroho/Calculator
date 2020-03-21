@@ -1,8 +1,5 @@
 #include "Expression.hpp"
 
-#include <iostream>
-#include <cmath>
-
 TerminalExpression::TerminalExpression(int x) {
     this->x = x;
 }
@@ -29,7 +26,8 @@ SquareRootExpression::SquareRootExpression(Expression* x):UnaryExpression(x){
 }
 
 int SquareRootExpression::solve() {
-    return sqrt(x->solve());
+    int s = sqrt(x->solve());
+    return s;
 }
 
 /* NegativeExpression::NegativeExpression(Expression* x):UnaryExpression(x){

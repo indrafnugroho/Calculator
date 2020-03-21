@@ -1,6 +1,7 @@
 #include "CalcButton.h"
 
 std::string CalcButton::str = "";
+Parser p;
 
 CalcButton::CalcButton() {
 }
@@ -23,9 +24,8 @@ void CalcButton::processOprNDot(std::string s) {
 	}
 }
 void CalcButton::processMC() {
-	std::string s;
-	//process str in Button using Parser then put it into s
-	CalcMemory::mcPressed(s);
+	//assume when user press mc, user already press result button
+	CalcMemory::mcPressed(std::to_string(CalcMemory::ans));
 }
 void CalcButton::processMR() {
 	if (CalcMemory::isQFilled) {
@@ -52,7 +52,15 @@ void CalcButton::processAns() {
 
 void CalcButton::processRes() {
 	CalcMemory::isAnsFilled = true;
-	//process str using parser
-	//masukin nilainya ke ans
-	str = "";
+	std::string res;
+	if (p.validate(str)) {
+		res = p.addX(str);
+		res = p.minusConversion(res);
+		res = p.toPostfix(res);
+		CalcMemory::ans = p.calculate(res);
+		str = "";
+	}
+	else {
+
+	}
 }

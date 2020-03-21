@@ -1,7 +1,6 @@
 #ifndef _EXPRESSION_HPP_
 #define _EXPRESSION_HPP_
 
-#include <iostream>
 #include <cmath>
 
 class Expression {

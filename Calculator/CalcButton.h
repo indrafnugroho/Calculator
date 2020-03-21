@@ -1,6 +1,7 @@
 #ifndef _CALCBUTTON_H_
 #define _CALCBUTTON_H_
 #include "CalcMemory.h"
+#include "Parser.hpp"
 class CalcButton {
 public:
 	static std::string str;

@@ -4,7 +4,7 @@ std::queue <std::string> CalcMemory::q;
 int CalcMemory::ans = 1000000;
 bool CalcMemory::isAnsFilled = false;
 bool CalcMemory::isQFilled = false;
-std::string lastMR = "";
+std::string CalcMemory::lastMR = "";
 
 CalcMemory::CalcMemory() {}
 

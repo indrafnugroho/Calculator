@@ -3,11 +3,11 @@
 #include <cmath>
 #include "Parser.hpp"
 
-using namespace std;
+//using namespace std;
 
 // Spesifikasi tiap method ada di Parser.hpp
-bool Parser :: validate(string input){
-    int i = 0;
+bool Parser :: validate(std::string input){
+    size_t i = 0;
     bool previousIsOperator = true;
     bool previousIsSquareRoot = false;
     bool previousIsDot = false;
@@ -90,9 +90,9 @@ bool Parser :: validate(string input){
     return true;
 }
 
-string Parser :: addX(string input){
-    int i = 0;
-    string retval = input;
+std::string Parser :: addX(std::string input){
+    size_t i = 0;
+    std::string retval = input;
     while (i < retval.size()){
         if (retval[i] == 's'){
             if (retval[i - 2] == '0' || retval[i - 2] == '1' || retval[i - 2] == '2' || retval[i - 2] == '3' || retval[i - 2] == '4' || retval[i - 2] == '5' || retval[i - 2] == '6' || retval[i - 2] == '7' || retval[i - 2] == '8' || retval[i - 2] == '9'){
@@ -106,9 +106,9 @@ string Parser :: addX(string input){
     return retval;
 }
 
-string Parser :: minusConversion(string input){
-    int i = 0;
-    string retval = input;
+std::string Parser :: minusConversion(std::string input){
+    size_t i = 0;
+    std::string retval = input;
     while (retval[0] == ' '){
         retval.erase(i, 1);
     }
@@ -135,10 +135,10 @@ string Parser :: minusConversion(string input){
     return retval;
 }
 
-string Parser :: toPostfix(string infix){
-    stack<char> store;
-    string retval;
-    int i = 0;
+std::string Parser :: toPostfix(std::string infix){
+    std::stack<char> store;
+    std::string retval;
+    size_t i = 0;
     int j, k;
     bool lastIsOperator;
 
@@ -203,11 +203,12 @@ string Parser :: toPostfix(string infix){
     return retval;
 }
 
-int Parser :: calculate(string postfix){
+int Parser :: calculate(std::string postfix){
     //stack<Expression> store;
-    stack<int> store;
-    int i = 0;
+    std::stack<int> store;
+    size_t i = 0;
     int j, k, op1, op2;
+    int tmp;
 
     while (i < postfix.size()){
         if (postfix[i] == '0' || postfix[i] == '1' || postfix[i] == '2' || postfix[i] == '3' || postfix[i] == '4' || postfix[i] == '5' || postfix[i] == '6' || postfix[i] == '7' || postfix[i] == '8' || postfix[i] == '9'){
@@ -283,7 +284,8 @@ int Parser :: calculate(string postfix){
 
                 op1 = store.top();
                 store.pop();
-                store.push(sqrt(op1));
+                tmp = sqrt(op1);
+                store.push(tmp);
                 /*SquareRootExpression sq(&store.top());
                 store.pop();
                 store.push(sq);*/
