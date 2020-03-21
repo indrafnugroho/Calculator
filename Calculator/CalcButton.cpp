@@ -14,7 +14,7 @@ void CalcButton::processNum(std::string num) {
 	concatStr(num);
 }
 void CalcButton::processOprNDot(std::string s) {
-	if (str.compare(".") == 0) {
+	if (s.compare(".") == 0) {
 		concatStr(s);
 	}
 	else {
@@ -54,11 +54,10 @@ void CalcButton::processRes() {
 	CalcMemory::isAnsFilled = true;
 	std::string res;
 	if (p.validate(str)) {
-		res = p.addX(str);
-		res = p.minusConversion(res);
+		res = p.minusConversion(str);
 		res = p.toPostfix(res);
 		CalcMemory::ans = p.calculate(res);
-		str = "";
+		str = std::to_string(CalcMemory::ans);
 	}
 	else {
 
