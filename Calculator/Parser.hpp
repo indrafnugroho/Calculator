@@ -22,7 +22,7 @@ class Parser{
         std::string toPostfix(std::string);
 
         /* Menerima string postfix dan mengembalikan hasil perhitungan */
-        int calculate(std::string);
+        float calculate(std::string);
 };
 
 #endif

@@ -93,6 +93,9 @@ bool Parser :: validate(std::string input){
 std::string Parser :: addX(std::string input){
     size_t i = 0;
     std::string retval = input;
+    while (retval[0] == ' '){
+        retval.erase(i, 1);
+    }
     while (i < retval.size()){
         if (retval[i] == 's'){
             if (retval[i - 2] == '0' || retval[i - 2] == '1' || retval[i - 2] == '2' || retval[i - 2] == '3' || retval[i - 2] == '4' || retval[i - 2] == '5' || retval[i - 2] == '6' || retval[i - 2] == '7' || retval[i - 2] == '8' || retval[i - 2] == '9'){
@@ -141,7 +144,10 @@ std::string Parser :: toPostfix(std::string infix){
     size_t i = 0;
     int j, k;
     bool lastIsOperator;
-
+    while (retval[0] == ' '){
+        retval.erase(i, 1);
+    }
+    
     while (i < infix.size()){
 
         if (infix[i] == '0' || infix[i] == '1' || infix[i] == '2' || infix[i] == '3' || infix[i] == '4' || infix[i] == '5' || infix[i] == '6' || infix[i] == '7' || infix[i] == '8' || infix[i] == '9'){
@@ -156,7 +162,7 @@ std::string Parser :: toPostfix(std::string infix){
             retval += infix.substr(j, k) + " ";
         }
         else if (infix[i] == '+' || infix[i] == '-' || infix[i] == 'x' || infix[i] == ':' || infix[i] == 's'){
-            lastIsOperator = true;
+            
             if (store.empty()){
                 store.push(infix[i]);
             }
@@ -189,6 +195,7 @@ std::string Parser :: toPostfix(std::string infix){
                         store.push(infix[i]);
                     }
                 }
+                lastIsOperator = true;
             }
         }
 
@@ -203,9 +210,9 @@ std::string Parser :: toPostfix(std::string infix){
     return retval;
 }
 
-int Parser :: calculate(std::string postfix){
+float Parser :: calculate(std::string postfix){
     //stack<Expression> store;
-    std::stack<int> store;
+    std::stack<float> store;
     size_t i = 0;
     int j, k, op1, op2;
     int tmp;
@@ -219,7 +226,7 @@ int Parser :: calculate(std::string postfix){
                 k++;
             }
             //TerminalExpression temp(stoi(postfix.substr(j, k)));
-            int temp = stoi(postfix.substr(j, k));
+            float temp = std::stof(postfix.substr(j, k));
             store.push(temp);
         }
         else{
