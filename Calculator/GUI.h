@@ -1,5 +1,5 @@
 #pragma once
-
+#include "CalcButton.h"
 namespace Calculator {
 
 	using namespace System;
@@ -34,27 +34,50 @@ namespace Calculator {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button7;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button9;
-	private: System::Windows::Forms::Button^ button10;
-	private: System::Windows::Forms::Button^ button11;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button12;
-	private: System::Windows::Forms::Button^ button13;
-	private: System::Windows::Forms::Button^ button14;
-	private: System::Windows::Forms::Button^ button15;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button16;
-	private: System::Windows::Forms::Button^ button17;
-	private: System::Windows::Forms::Button^ button18;
-	private: System::Windows::Forms::Button^ button19;
-	private: System::Windows::Forms::Button^ button20;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ num0;
+	private: System::Windows::Forms::Button^ dotBtn;
+	protected:
+
+
+	private: System::Windows::Forms::Button^ ansBtn;
+	private: System::Windows::Forms::Button^ resBtn;
+	private: System::Windows::Forms::Button^ subsBtn;
+	private: System::Windows::Forms::Button^ plusBtn;
+
+
+
+
+	private: System::Windows::Forms::Button^ num3;
+
+	private: System::Windows::Forms::Button^ num2;
+	private: System::Windows::Forms::Button^ num1;
+	private: System::Windows::Forms::Button^ divBtn;
+
+
+
+	private: System::Windows::Forms::Button^ multBtn;
+
+	private: System::Windows::Forms::Button^ num6;
+	private: System::Windows::Forms::Button^ num5;
+	private: System::Windows::Forms::Button^ num4;
+	private: System::Windows::Forms::Button^ mrBtn;
+
+
+
+
+	private: System::Windows::Forms::Button^ mcBtn;
+
+	private: System::Windows::Forms::Button^ num9;
+
+	private: System::Windows::Forms::Button^ num8;
+	private: System::Windows::Forms::Button^ num7;
+	private: System::Windows::Forms::Button^ clearBtn;
+
+
+
+
+	private: System::Windows::Forms::Button^ sqrtBtn;
+	private: System::Windows::Forms::TextBox^ textBox1;
 	protected:
 
 	private:
@@ -70,255 +93,368 @@ namespace Calculator {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button9 = (gcnew System::Windows::Forms::Button());
-			this->button10 = (gcnew System::Windows::Forms::Button());
-			this->button11 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button12 = (gcnew System::Windows::Forms::Button());
-			this->button13 = (gcnew System::Windows::Forms::Button());
-			this->button14 = (gcnew System::Windows::Forms::Button());
-			this->button15 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button16 = (gcnew System::Windows::Forms::Button());
-			this->button17 = (gcnew System::Windows::Forms::Button());
-			this->button18 = (gcnew System::Windows::Forms::Button());
-			this->button19 = (gcnew System::Windows::Forms::Button());
-			this->button20 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->num0 = (gcnew System::Windows::Forms::Button());
+			this->dotBtn = (gcnew System::Windows::Forms::Button());
+			this->ansBtn = (gcnew System::Windows::Forms::Button());
+			this->resBtn = (gcnew System::Windows::Forms::Button());
+			this->subsBtn = (gcnew System::Windows::Forms::Button());
+			this->plusBtn = (gcnew System::Windows::Forms::Button());
+			this->num3 = (gcnew System::Windows::Forms::Button());
+			this->num2 = (gcnew System::Windows::Forms::Button());
+			this->num1 = (gcnew System::Windows::Forms::Button());
+			this->divBtn = (gcnew System::Windows::Forms::Button());
+			this->multBtn = (gcnew System::Windows::Forms::Button());
+			this->num6 = (gcnew System::Windows::Forms::Button());
+			this->num5 = (gcnew System::Windows::Forms::Button());
+			this->num4 = (gcnew System::Windows::Forms::Button());
+			this->mrBtn = (gcnew System::Windows::Forms::Button());
+			this->mcBtn = (gcnew System::Windows::Forms::Button());
+			this->num9 = (gcnew System::Windows::Forms::Button());
+			this->num8 = (gcnew System::Windows::Forms::Button());
+			this->num7 = (gcnew System::Windows::Forms::Button());
+			this->clearBtn = (gcnew System::Windows::Forms::Button());
+			this->sqrtBtn = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
-			// button1
+			// num0
 			// 
-			this->button1->Location = System::Drawing::Point(59, 404);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(41, 40);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"0";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &GUI::button1_Click);
+			this->num0->Location = System::Drawing::Point(56, 286);
+			this->num0->Name = L"num0";
+			this->num0->Size = System::Drawing::Size(41, 40);
+			this->num0->TabIndex = 0;
+			this->num0->Text = L"0";
+			this->num0->UseVisualStyleBackColor = true;
+			this->num0->Click += gcnew System::EventHandler(this, &GUI::num0_Click);
 			// 
-			// button2
+			// dotBtn
 			// 
-			this->button2->Location = System::Drawing::Point(106, 404);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(41, 40);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L".";
-			this->button2->UseVisualStyleBackColor = true;
+			this->dotBtn->Location = System::Drawing::Point(103, 286);
+			this->dotBtn->Name = L"dotBtn";
+			this->dotBtn->Size = System::Drawing::Size(41, 40);
+			this->dotBtn->TabIndex = 1;
+			this->dotBtn->Text = L".";
+			this->dotBtn->UseVisualStyleBackColor = true;
+			this->dotBtn->Click += gcnew System::EventHandler(this, &GUI::dotBtn_Click);
 			// 
-			// button3
+			// ansBtn
 			// 
-			this->button3->Location = System::Drawing::Point(153, 404);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(41, 40);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Ans";
-			this->button3->UseVisualStyleBackColor = true;
+			this->ansBtn->Location = System::Drawing::Point(9, 286);
+			this->ansBtn->Name = L"ansBtn";
+			this->ansBtn->Size = System::Drawing::Size(41, 40);
+			this->ansBtn->TabIndex = 2;
+			this->ansBtn->Text = L"Ans";
+			this->ansBtn->UseVisualStyleBackColor = true;
+			this->ansBtn->Click += gcnew System::EventHandler(this, &GUI::ansBtn_Click);
 			// 
-			// button5
+			// resBtn
 			// 
-			this->button5->Location = System::Drawing::Point(200, 404);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(41, 40);
-			this->button5->TabIndex = 4;
-			this->button5->Text = L"=";
-			this->button5->UseVisualStyleBackColor = true;
+			this->resBtn->Location = System::Drawing::Point(197, 286);
+			this->resBtn->Name = L"resBtn";
+			this->resBtn->Size = System::Drawing::Size(41, 40);
+			this->resBtn->TabIndex = 4;
+			this->resBtn->Text = L"=";
+			this->resBtn->UseVisualStyleBackColor = true;
+			this->resBtn->Click += gcnew System::EventHandler(this, &GUI::resBtn_Click);
 			// 
-			// button7
+			// subsBtn
 			// 
-			this->button7->Location = System::Drawing::Point(200, 349);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(41, 40);
-			this->button7->TabIndex = 10;
-			this->button7->Text = L"-";
-			this->button7->UseVisualStyleBackColor = true;
+			this->subsBtn->Location = System::Drawing::Point(197, 228);
+			this->subsBtn->Name = L"subsBtn";
+			this->subsBtn->Size = System::Drawing::Size(41, 40);
+			this->subsBtn->TabIndex = 10;
+			this->subsBtn->Text = L"-";
+			this->subsBtn->UseVisualStyleBackColor = true;
+			this->subsBtn->Click += gcnew System::EventHandler(this, &GUI::subsBtn_Click);
 			// 
-			// button8
+			// plusBtn
 			// 
-			this->button8->Location = System::Drawing::Point(153, 349);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(41, 40);
-			this->button8->TabIndex = 9;
-			this->button8->Text = L"+";
-			this->button8->UseVisualStyleBackColor = true;
+			this->plusBtn->Location = System::Drawing::Point(150, 228);
+			this->plusBtn->Name = L"plusBtn";
+			this->plusBtn->Size = System::Drawing::Size(41, 40);
+			this->plusBtn->TabIndex = 9;
+			this->plusBtn->Text = L"+";
+			this->plusBtn->UseVisualStyleBackColor = true;
+			this->plusBtn->Click += gcnew System::EventHandler(this, &GUI::plusBtn_Click);
 			// 
-			// button9
+			// num3
 			// 
-			this->button9->Location = System::Drawing::Point(106, 349);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(41, 40);
-			this->button9->TabIndex = 8;
-			this->button9->Text = L"3";
-			this->button9->UseVisualStyleBackColor = true;
+			this->num3->Location = System::Drawing::Point(103, 228);
+			this->num3->Name = L"num3";
+			this->num3->Size = System::Drawing::Size(41, 40);
+			this->num3->TabIndex = 8;
+			this->num3->Text = L"3";
+			this->num3->UseVisualStyleBackColor = true;
+			this->num3->Click += gcnew System::EventHandler(this, &GUI::num3_Click);
 			// 
-			// button10
+			// num2
 			// 
-			this->button10->Location = System::Drawing::Point(59, 349);
-			this->button10->Name = L"button10";
-			this->button10->Size = System::Drawing::Size(41, 40);
-			this->button10->TabIndex = 7;
-			this->button10->Text = L"2";
-			this->button10->UseVisualStyleBackColor = true;
+			this->num2->Location = System::Drawing::Point(56, 228);
+			this->num2->Name = L"num2";
+			this->num2->Size = System::Drawing::Size(41, 40);
+			this->num2->TabIndex = 7;
+			this->num2->Text = L"2";
+			this->num2->UseVisualStyleBackColor = true;
+			this->num2->Click += gcnew System::EventHandler(this, &GUI::num2_Click);
 			// 
-			// button11
+			// num1
 			// 
-			this->button11->Location = System::Drawing::Point(12, 349);
-			this->button11->Name = L"button11";
-			this->button11->Size = System::Drawing::Size(41, 40);
-			this->button11->TabIndex = 6;
-			this->button11->Text = L"1";
-			this->button11->UseVisualStyleBackColor = true;
+			this->num1->Location = System::Drawing::Point(9, 228);
+			this->num1->Name = L"num1";
+			this->num1->Size = System::Drawing::Size(41, 40);
+			this->num1->TabIndex = 6;
+			this->num1->Text = L"1";
+			this->num1->UseVisualStyleBackColor = true;
+			this->num1->Click += gcnew System::EventHandler(this, &GUI::num1_Click);
 			// 
-			// button6
+			// divBtn
 			// 
-			this->button6->Location = System::Drawing::Point(200, 289);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(41, 40);
-			this->button6->TabIndex = 15;
-			this->button6->Text = L"/";
-			this->button6->UseVisualStyleBackColor = true;
+			this->divBtn->Location = System::Drawing::Point(197, 171);
+			this->divBtn->Name = L"divBtn";
+			this->divBtn->Size = System::Drawing::Size(41, 40);
+			this->divBtn->TabIndex = 15;
+			this->divBtn->Text = L"/";
+			this->divBtn->UseVisualStyleBackColor = true;
+			this->divBtn->Click += gcnew System::EventHandler(this, &GUI::divBtn_Click);
 			// 
-			// button12
+			// multBtn
 			// 
-			this->button12->Location = System::Drawing::Point(153, 289);
-			this->button12->Name = L"button12";
-			this->button12->Size = System::Drawing::Size(41, 40);
-			this->button12->TabIndex = 14;
-			this->button12->Text = L"X";
-			this->button12->UseVisualStyleBackColor = true;
+			this->multBtn->Location = System::Drawing::Point(150, 171);
+			this->multBtn->Name = L"multBtn";
+			this->multBtn->Size = System::Drawing::Size(41, 40);
+			this->multBtn->TabIndex = 14;
+			this->multBtn->Text = L"X";
+			this->multBtn->UseVisualStyleBackColor = true;
+			this->multBtn->Click += gcnew System::EventHandler(this, &GUI::multBtn_Click);
 			// 
-			// button13
+			// num6
 			// 
-			this->button13->Location = System::Drawing::Point(106, 289);
-			this->button13->Name = L"button13";
-			this->button13->Size = System::Drawing::Size(41, 40);
-			this->button13->TabIndex = 13;
-			this->button13->Text = L"6";
-			this->button13->UseVisualStyleBackColor = true;
+			this->num6->Location = System::Drawing::Point(103, 171);
+			this->num6->Name = L"num6";
+			this->num6->Size = System::Drawing::Size(41, 40);
+			this->num6->TabIndex = 13;
+			this->num6->Text = L"6";
+			this->num6->UseVisualStyleBackColor = true;
+			this->num6->Click += gcnew System::EventHandler(this, &GUI::num6_Click);
 			// 
-			// button14
+			// num5
 			// 
-			this->button14->Location = System::Drawing::Point(59, 289);
-			this->button14->Name = L"button14";
-			this->button14->Size = System::Drawing::Size(41, 40);
-			this->button14->TabIndex = 12;
-			this->button14->Text = L"5";
-			this->button14->UseVisualStyleBackColor = true;
+			this->num5->Location = System::Drawing::Point(56, 171);
+			this->num5->Name = L"num5";
+			this->num5->Size = System::Drawing::Size(41, 40);
+			this->num5->TabIndex = 12;
+			this->num5->Text = L"5";
+			this->num5->UseVisualStyleBackColor = true;
+			this->num5->Click += gcnew System::EventHandler(this, &GUI::num5_Click);
 			// 
-			// button15
+			// num4
 			// 
-			this->button15->Location = System::Drawing::Point(12, 289);
-			this->button15->Name = L"button15";
-			this->button15->Size = System::Drawing::Size(41, 40);
-			this->button15->TabIndex = 11;
-			this->button15->Text = L"4";
-			this->button15->UseVisualStyleBackColor = true;
+			this->num4->Location = System::Drawing::Point(9, 171);
+			this->num4->Name = L"num4";
+			this->num4->Size = System::Drawing::Size(41, 40);
+			this->num4->TabIndex = 11;
+			this->num4->Text = L"4";
+			this->num4->UseVisualStyleBackColor = true;
+			this->num4->Click += gcnew System::EventHandler(this, &GUI::num4_Click);
 			// 
-			// button4
+			// mrBtn
 			// 
-			this->button4->Location = System::Drawing::Point(200, 224);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(41, 40);
-			this->button4->TabIndex = 20;
-			this->button4->Text = L"MR";
-			this->button4->UseVisualStyleBackColor = true;
+			this->mrBtn->Location = System::Drawing::Point(197, 116);
+			this->mrBtn->Name = L"mrBtn";
+			this->mrBtn->Size = System::Drawing::Size(41, 40);
+			this->mrBtn->TabIndex = 20;
+			this->mrBtn->Text = L"MR";
+			this->mrBtn->UseVisualStyleBackColor = true;
+			this->mrBtn->Click += gcnew System::EventHandler(this, &GUI::mrBtn_Click);
 			// 
-			// button16
+			// mcBtn
 			// 
-			this->button16->Location = System::Drawing::Point(153, 224);
-			this->button16->Name = L"button16";
-			this->button16->Size = System::Drawing::Size(41, 40);
-			this->button16->TabIndex = 19;
-			this->button16->Text = L"MC";
-			this->button16->UseVisualStyleBackColor = true;
+			this->mcBtn->Location = System::Drawing::Point(150, 116);
+			this->mcBtn->Name = L"mcBtn";
+			this->mcBtn->Size = System::Drawing::Size(41, 40);
+			this->mcBtn->TabIndex = 19;
+			this->mcBtn->Text = L"MC";
+			this->mcBtn->UseVisualStyleBackColor = true;
+			this->mcBtn->Click += gcnew System::EventHandler(this, &GUI::mcBtn_Click);
 			// 
-			// button17
+			// num9
 			// 
-			this->button17->Location = System::Drawing::Point(106, 224);
-			this->button17->Name = L"button17";
-			this->button17->Size = System::Drawing::Size(41, 40);
-			this->button17->TabIndex = 18;
-			this->button17->Text = L"9";
-			this->button17->UseVisualStyleBackColor = true;
+			this->num9->Location = System::Drawing::Point(103, 116);
+			this->num9->Name = L"num9";
+			this->num9->Size = System::Drawing::Size(41, 40);
+			this->num9->TabIndex = 18;
+			this->num9->Text = L"9";
+			this->num9->UseVisualStyleBackColor = true;
+			this->num9->Click += gcnew System::EventHandler(this, &GUI::num9_Click);
 			// 
-			// button18
+			// num8
 			// 
-			this->button18->Location = System::Drawing::Point(59, 224);
-			this->button18->Name = L"button18";
-			this->button18->Size = System::Drawing::Size(41, 40);
-			this->button18->TabIndex = 17;
-			this->button18->Text = L"8";
-			this->button18->UseVisualStyleBackColor = true;
+			this->num8->Location = System::Drawing::Point(56, 116);
+			this->num8->Name = L"num8";
+			this->num8->Size = System::Drawing::Size(41, 40);
+			this->num8->TabIndex = 17;
+			this->num8->Text = L"8";
+			this->num8->UseVisualStyleBackColor = true;
+			this->num8->Click += gcnew System::EventHandler(this, &GUI::num8_Click);
 			// 
-			// button19
+			// num7
 			// 
-			this->button19->Location = System::Drawing::Point(12, 224);
-			this->button19->Name = L"button19";
-			this->button19->Size = System::Drawing::Size(41, 40);
-			this->button19->TabIndex = 16;
-			this->button19->Text = L"7";
-			this->button19->UseVisualStyleBackColor = true;
+			this->num7->Location = System::Drawing::Point(9, 116);
+			this->num7->Name = L"num7";
+			this->num7->Size = System::Drawing::Size(41, 40);
+			this->num7->TabIndex = 16;
+			this->num7->Text = L"7";
+			this->num7->UseVisualStyleBackColor = true;
+			this->num7->Click += gcnew System::EventHandler(this, &GUI::num7_Click);
 			// 
-			// button20
+			// clearBtn
 			// 
-			this->button20->Location = System::Drawing::Point(12, 404);
-			this->button20->Name = L"button20";
-			this->button20->Size = System::Drawing::Size(41, 40);
-			this->button20->TabIndex = 21;
-			this->button20->Text = L"Clear";
-			this->button20->UseVisualStyleBackColor = true;
+			this->clearBtn->Location = System::Drawing::Point(150, 56);
+			this->clearBtn->Name = L"clearBtn";
+			this->clearBtn->Size = System::Drawing::Size(88, 40);
+			this->clearBtn->TabIndex = 21;
+			this->clearBtn->Text = L"Clear";
+			this->clearBtn->UseVisualStyleBackColor = true;
+			this->clearBtn->Click += gcnew System::EventHandler(this, &GUI::clearBtn_Click);
 			// 
-			// label1
+			// sqrtBtn
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(9, 9);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(229, 31);
-			this->label1->TabIndex = 22;
-			this->label1->Text = L"CONTOH LAYAR";
+			this->sqrtBtn->Location = System::Drawing::Point(150, 286);
+			this->sqrtBtn->Name = L"sqrtBtn";
+			this->sqrtBtn->Size = System::Drawing::Size(41, 40);
+			this->sqrtBtn->TabIndex = 23;
+			this->sqrtBtn->Text = L"sqrt";
+			this->sqrtBtn->UseVisualStyleBackColor = true;
+			this->sqrtBtn->Click += gcnew System::EventHandler(this, &GUI::sqrtBtn_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20));
+			this->textBox1->Location = System::Drawing::Point(9, 10);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->ReadOnly = true;
+			this->textBox1->Size = System::Drawing::Size(228, 38);
+			this->textBox1->TabIndex = 24;
+			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// GUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(249, 456);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->button20);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button16);
-			this->Controls->Add(this->button17);
-			this->Controls->Add(this->button18);
-			this->Controls->Add(this->button19);
-			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button12);
-			this->Controls->Add(this->button13);
-			this->Controls->Add(this->button14);
-			this->Controls->Add(this->button15);
-			this->Controls->Add(this->button7);
-			this->Controls->Add(this->button8);
-			this->Controls->Add(this->button9);
-			this->Controls->Add(this->button10);
-			this->Controls->Add(this->button11);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(247, 350);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->sqrtBtn);
+			this->Controls->Add(this->clearBtn);
+			this->Controls->Add(this->mrBtn);
+			this->Controls->Add(this->mcBtn);
+			this->Controls->Add(this->num9);
+			this->Controls->Add(this->num8);
+			this->Controls->Add(this->num7);
+			this->Controls->Add(this->divBtn);
+			this->Controls->Add(this->multBtn);
+			this->Controls->Add(this->num6);
+			this->Controls->Add(this->num5);
+			this->Controls->Add(this->num4);
+			this->Controls->Add(this->subsBtn);
+			this->Controls->Add(this->plusBtn);
+			this->Controls->Add(this->num3);
+			this->Controls->Add(this->num2);
+			this->Controls->Add(this->num1);
+			this->Controls->Add(this->resBtn);
+			this->Controls->Add(this->ansBtn);
+			this->Controls->Add(this->dotBtn);
+			this->Controls->Add(this->num0);
 			this->Name = L"GUI";
 			this->Text = L"GUI";
+			this->Load += gcnew System::EventHandler(this, &GUI::GUI_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void num0_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "0";
+		CalcButton::processNum("0");
+	}
+	private: System::Void num1_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "1";
+		CalcButton::processNum("1");
+	}
+	private: System::Void num2_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "2";
+		CalcButton::processNum("2");
+	}
+	private: System::Void num3_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "3";
+		CalcButton::processNum("3");
+	}
+	private: System::Void num4_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "4";
+		CalcButton::processNum("4");
+	}
+	private: System::Void num5_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "5";
+		CalcButton::processNum("5");
+	}
+	private: System::Void num6_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "6";
+		CalcButton::processNum("6");
+	}
+	private: System::Void num7_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "7";
+		CalcButton::processNum("7");
+	}
+	private: System::Void num8_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "8";
+		CalcButton::processNum("8");
+	}
+	private: System::Void num9_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "9";
+		CalcButton::processNum("9");
+	}
+	private: System::Void ansBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "Ans";
+	}
+	private: System::Void multBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "x";
+		CalcButton::processOprNDot("x");
+	}
+	private: System::Void divBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = textBox1->Text + "/";
+		CalcButton::processOprNDot(":");
+	}
+	private: System::Void plusBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "+";
+		CalcButton::processOprNDot("+");
+	}
+	private: System::Void subsBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "-";
+		CalcButton::processOprNDot("-");
+	}
+	private: System::Void dotBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += ".";
+		CalcButton::processOprNDot(".");
+	}
+	private: System::Void sqrtBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text += "s";
+		CalcButton::processOprNDot("s");
+	}
+
+	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+	private: System::Void clearBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = "";
+		CalcButton::processClear();
+	}
+	private: System::Void mcBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		CalcButton::processMC();
+	}
+	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		CalcButton::processMR();
+	}
+	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		CalcButton::processRes();
 	}
 };
 }
