@@ -148,7 +148,7 @@ std::string Parser :: toPostfix(std::string infix){
             lastIsOperator = false;
             j = i;
             k = 0;
-            while (infix[i] != ' '){
+            while (infix[i] != ' ' && i < infix.size()){
                 i++;
                 k++;
             }
