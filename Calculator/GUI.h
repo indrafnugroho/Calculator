@@ -414,6 +414,7 @@ namespace Calculator {
 	}
 	private: System::Void ansBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "Ans";
+		CalcButton::processAns();
 	}
 	private: System::Void multBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "x";
@@ -452,9 +453,11 @@ namespace Calculator {
 	}
 	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		CalcButton::processMR();
+		textBox1->Text += gcnew String(CalcMemory::lastMR.c_str());
 	}
 	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		CalcButton::processRes();
+		textBox1->Text = gcnew String(std::to_string(CalcMemory::ans).c_str());
 	}
 };
 }

@@ -1,9 +1,9 @@
-#include <string>
+#ifndef _CALCBUTTON_H_
+#define _CALCBUTTON_H_
+#include "CalcMemory.h"
 class CalcButton {
 public:
 	static std::string str;
-	static int ans;
-	static bool isAnsFilled;
 
 	CalcButton();
 
@@ -17,3 +17,4 @@ public:
 	static void processAns();
 	static void processRes();
 };
+#endif
