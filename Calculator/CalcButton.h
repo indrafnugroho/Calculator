@@ -17,5 +17,7 @@ public:
 	static void processClear();
 	static void processAns();
 	static void processRes();
+	static void processAC();
+	static void processDel();
 };
 #endif

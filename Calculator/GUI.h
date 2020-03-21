@@ -78,6 +78,9 @@ namespace Calculator {
 
 	private: System::Windows::Forms::Button^ sqrtBtn;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ acBtn;
+	private: System::Windows::Forms::Button^ delBtn;
+
 	protected:
 
 	private:
@@ -115,6 +118,8 @@ namespace Calculator {
 			this->clearBtn = (gcnew System::Windows::Forms::Button());
 			this->sqrtBtn = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->acBtn = (gcnew System::Windows::Forms::Button());
+			this->delBtn = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// num0
@@ -309,7 +314,7 @@ namespace Calculator {
 			// 
 			// clearBtn
 			// 
-			this->clearBtn->Location = System::Drawing::Point(150, 56);
+			this->clearBtn->Location = System::Drawing::Point(150, 60);
 			this->clearBtn->Name = L"clearBtn";
 			this->clearBtn->Size = System::Drawing::Size(88, 40);
 			this->clearBtn->TabIndex = 21;
@@ -337,11 +342,33 @@ namespace Calculator {
 			this->textBox1->TabIndex = 24;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
+			// acBtn
+			// 
+			this->acBtn->Location = System::Drawing::Point(9, 60);
+			this->acBtn->Name = L"acBtn";
+			this->acBtn->Size = System::Drawing::Size(41, 40);
+			this->acBtn->TabIndex = 25;
+			this->acBtn->Text = L"AC";
+			this->acBtn->UseVisualStyleBackColor = true;
+			this->acBtn->Click += gcnew System::EventHandler(this, &GUI::acBtn_Click);
+			// 
+			// delBtn
+			// 
+			this->delBtn->Location = System::Drawing::Point(56, 60);
+			this->delBtn->Name = L"delBtn";
+			this->delBtn->Size = System::Drawing::Size(41, 40);
+			this->delBtn->TabIndex = 26;
+			this->delBtn->Text = L"Del";
+			this->delBtn->UseVisualStyleBackColor = true;
+			this->delBtn->Click += gcnew System::EventHandler(this, &GUI::delBtn_Click);
+			// 
 			// GUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(247, 350);
+			this->Controls->Add(this->delBtn);
+			this->Controls->Add(this->acBtn);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->sqrtBtn);
 			this->Controls->Add(this->clearBtn);
@@ -454,10 +481,22 @@ namespace Calculator {
 	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		CalcButton::processMR();
 		textBox1->Text += gcnew String(CalcMemory::lastMR.c_str());
+		if (!CalcMemory::isQFilled) CalcMemory::lastMR = "";
 	}
 	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		CalcButton::processRes();
 		textBox1->Text = gcnew String(CalcButton::str.c_str());
+	}
+	private: System::Void acBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		CalcButton::processAC();
+		textBox1->Text = gcnew String(CalcButton::str.c_str());
+	}
+	private: System::Void delBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (textBox1->Text->Length > 0) {
+			CalcButton::processDel();
+			textBox1->Text = textBox1->Text->Remove(textBox1->Text->Length - 1);
+			//not finished
+		}
 	}
 };
 }

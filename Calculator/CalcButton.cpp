@@ -30,6 +30,7 @@ void CalcButton::processMC() {
 void CalcButton::processMR() {
 	if (CalcMemory::isQFilled) {
 		CalcMemory::mrPressed();
+		concatStr(CalcMemory::lastMR);
 	}
 	else {
 
@@ -62,4 +63,12 @@ void CalcButton::processRes() {
 	else {
 
 	}
+}
+
+void CalcButton::processAC() {
+	str = "";
+}
+
+void CalcButton::processDel() {
+	if (str.size() > 0) str.pop_back();
 }
