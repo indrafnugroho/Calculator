@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
     Parser p;
-    string a = " s 9"; // Ubah ubah input aja disini, aku mager pake cin
+    string a = " 3 * 5 :"; // Ubah ubah input aja disini, aku mager pake cin
     // cin >> a;
 
     /*int i = 0;

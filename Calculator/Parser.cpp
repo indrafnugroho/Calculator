@@ -120,7 +120,7 @@ std::string Parser :: minusConversion(std::string input){
         if (retval[i] == '-'){
 
             if (i == 0){
-                retval.insert(i, "0 ");
+                retval.replace(i, 1, "n");
             }
             else {
 
@@ -161,7 +161,7 @@ std::string Parser :: toPostfix(std::string infix){
 
             retval += infix.substr(j, k) + " ";
         }
-        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == 'x' || infix[i] == ':' || infix[i] == 's'){
+        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == 'x' || infix[i] == ':' || infix[i] == 's' || infix[i] == 'n'){
             
             if (store.empty()){
                 store.push(infix[i]);
@@ -170,6 +170,14 @@ std::string Parser :: toPostfix(std::string infix){
 
                 if (infix[i] == 's'){
                     store.push(infix[i]);
+                }
+                else if (infix[i] == 'n'){
+
+                    while(!store.empty() && store.top() == 's'){
+                        retval.push_back(store.top());
+                        retval.push_back(' ');
+                        store.pop();
+                    }
                 }
                 else if (infix[i] == 'x' || infix[i] == ':'){
 
