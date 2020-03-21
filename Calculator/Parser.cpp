@@ -97,7 +97,7 @@ std::string Parser :: addX(std::string input){
         retval.erase(i, 1);
     }
     while (i < retval.size()){
-        if (retval[i] == 's'){
+        if (retval[i] == 's' && i != 0){
             if (retval[i - 2] == '0' || retval[i - 2] == '1' || retval[i - 2] == '2' || retval[i - 2] == '3' || retval[i - 2] == '4' || retval[i - 2] == '5' || retval[i - 2] == '6' || retval[i - 2] == '7' || retval[i - 2] == '8' || retval[i - 2] == '9'){
                 retval.insert(i, "x ");
             }
@@ -168,20 +168,12 @@ std::string Parser :: toPostfix(std::string infix){
             }
             else {
 
-                if (infix[i] == 's'){
+                if (infix[i] == 's' || infix[i] == 'n'){
                     store.push(infix[i]);
-                }
-                else if (infix[i] == 'n'){
-
-                    while(!store.empty() && store.top() == 's'){
-                        retval.push_back(store.top());
-                        retval.push_back(' ');
-                        store.pop();
-                    }
                 }
                 else if (infix[i] == 'x' || infix[i] == ':'){
 
-                    while (!store.empty() && (store.top() == 's' || store.top() == 'n')){
+                    while (!store.empty() && store.top() != '+' && store.top() != '-'){
                         retval.push_back(store.top());
                         retval.push_back(' ');
                         store.pop();
@@ -195,7 +187,7 @@ std::string Parser :: toPostfix(std::string infix){
                     }
                     else{
 
-                        while (!store.empty() && store.top() != '+' && store.top() != '-'){
+                        while (!store.empty()){
                             retval.push_back(store.top());
                             retval.push_back(' ');
                             store.pop();
