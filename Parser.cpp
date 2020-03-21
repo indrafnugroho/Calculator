@@ -109,6 +109,10 @@ string Parser :: addX(string input){
 string Parser :: minusConversion(string input){
     int i = 0;
     string retval = input;
+    while (retval[0] == ' '){
+        retval.erase(i, 1);
+    }
+
     while (i < retval.size()){
         if (retval[i] == '-'){
 
@@ -119,6 +123,9 @@ string Parser :: minusConversion(string input){
 
                 if (retval[i - 2] == '-'){
                     retval.replace(i - 2, 3, "+");
+                }
+                else if (retval[i - 2] == '+'){
+                    retval.replace(i - 2, 3, "-");
                 }
             }
         }
@@ -133,10 +140,12 @@ string Parser :: toPostfix(string infix){
     string retval;
     int i = 0;
     int j, k;
+    bool lastIsOperator;
 
     while (i < infix.size()){
 
         if (infix[i] == '0' || infix[i] == '1' || infix[i] == '2' || infix[i] == '3' || infix[i] == '4' || infix[i] == '5' || infix[i] == '6' || infix[i] == '7' || infix[i] == '8' || infix[i] == '9'){
+            lastIsOperator = false;
             j = i;
             k = 0;
             while (infix[i] != ' '){
@@ -147,6 +156,7 @@ string Parser :: toPostfix(string infix){
             retval += infix.substr(j, k) + " ";
         }
         else if (infix[i] == '+' || infix[i] == '-' || infix[i] == 'x' || infix[i] == ':' || infix[i] == 's'){
+            lastIsOperator = true;
             if (store.empty()){
                 store.push(infix[i]);
             }
@@ -157,7 +167,7 @@ string Parser :: toPostfix(string infix){
                 }
                 else if (infix[i] == 'x' || infix[i] == ':'){
 
-                    while (!store.empty() && store.top() == 's'){
+                    while (!store.empty() && (store.top() == 's' || store.top() == 'n')){
                         retval.push_back(store.top());
                         retval.push_back(' ');
                         store.pop();
@@ -166,12 +176,18 @@ string Parser :: toPostfix(string infix){
                 }
                 else{
 
-                    while (!store.empty() && store.top() != '+' && store.top() != '-'){
-                        retval.push_back(store.top());
-                        retval.push_back(' ');
-                        store.pop();
+                    if (infix[i] == '-' && lastIsOperator){
+                        store.push('n');
                     }
-                    store.push(infix[i]);
+                    else{
+
+                        while (!store.empty() && store.top() != '+' && store.top() != '-'){
+                            retval.push_back(store.top());
+                            retval.push_back(' ');
+                            store.pop();
+                        }
+                        store.push(infix[i]);
+                    }
                 }
             }
         }
@@ -191,7 +207,7 @@ int Parser :: calculate(string postfix){
     //stack<Expression> store;
     stack<int> store;
     int i = 0;
-    int j, k, currTop;
+    int j, k, op1, op2;
 
     while (i < postfix.size()){
         if (postfix[i] == '0' || postfix[i] == '1' || postfix[i] == '2' || postfix[i] == '3' || postfix[i] == '4' || postfix[i] == '5' || postfix[i] == '6' || postfix[i] == '7' || postfix[i] == '8' || postfix[i] == '9'){
@@ -209,11 +225,11 @@ int Parser :: calculate(string postfix){
 
             if (postfix[i] == '+'){
                 
-                currTop = store.top();
+                op2 = store.top();
                 store.pop();
-                currTop += store.top();
+                op1 = store.top();
                 store.pop();
-                store.push(currTop);
+                store.push(op1 + op2);
                 /*currTop = store.top().solve();
                 store.pop();
                 TerminalExpression temp(currTop);
@@ -223,11 +239,11 @@ int Parser :: calculate(string postfix){
             }
             else if (postfix[i] == '-'){
 
-                currTop = store.top();
+                op2 = store.top();
                 store.pop();
-                currTop -= store.top();
+                op1 = store.top();
                 store.pop();
-                store.push(currTop);
+                store.push(op1 - op2);
                 /*currTop = store.top().solve();
                 store.pop();
                 TerminalExpression temp(currTop);
@@ -237,11 +253,11 @@ int Parser :: calculate(string postfix){
             }
             else if (postfix[i] == 'x'){
 
-                currTop = store.top();
+                op2 = store.top();
                 store.pop();
-                currTop *= store.top();
+                op1 = store.top();
                 store.pop();
-                store.push(currTop);
+                store.push(op1 * op2);
                 /*currTop = store.top().solve();
                 store.pop();
                 TerminalExpression temp(currTop);
@@ -251,11 +267,11 @@ int Parser :: calculate(string postfix){
             }
             else if (postfix[i] == ':'){
 
-                currTop = store.top();
+                op2 = store.top();
                 store.pop();
-                currTop /= store.top();
+                op1 = store.top();
                 store.pop();
-                store.push(currTop);
+                store.push(op1 / op2);
                 /*currTop = store.top().solve();
                 store.pop();
                 TerminalExpression temp(currTop);
@@ -265,12 +281,18 @@ int Parser :: calculate(string postfix){
             }
             else if (postfix[i] == 's'){
 
-                currTop = store.top();
+                op1 = store.top();
                 store.pop();
-                store.push(sqrt(currTop));
+                store.push(sqrt(op1));
                 /*SquareRootExpression sq(&store.top());
                 store.pop();
                 store.push(sq);*/
+            }
+            else if (postfix[i] == 'n'){
+
+                op1 = store.top();
+                store.pop();
+                store.push((-1) * op1);
             }
         }
         
