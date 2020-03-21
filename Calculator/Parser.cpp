@@ -124,11 +124,11 @@ std::string Parser :: minusConversion(std::string input){
             }
             else {
 
-                if (retval[i - 2] == '-'){
-                    retval.replace(i - 2, 3, "+");
+                if (retval[i - 3] == '-'){
+                    retval.replace(i - 3, 4, "+");
                 }
-                else if (retval[i - 2] == '+'){
-                    retval.replace(i - 2, 3, "-");
+                else if (retval[i - 3] == '+'){
+                    retval.replace(i - 3, 4, "-");
                 }
             }
         }
