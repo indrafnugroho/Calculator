@@ -122,7 +122,7 @@ std::string Parser :: minusConversion(std::string input){
             if (i == 0){
                 retval.replace(i, 1, "n");
             }
-            else {
+            else if (i >= 3){
 
                 if (retval[i - 3] == '-'){
                     retval.replace(i - 3, 4, "+");
