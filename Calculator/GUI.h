@@ -457,7 +457,7 @@ namespace Calculator {
 	}
 	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		CalcButton::processRes();
-		textBox1->Text = gcnew String(std::to_string(CalcMemory::ans).c_str());
+		textBox1->Text = gcnew String(CalcButton::str.c_str());
 	}
 };
 }
