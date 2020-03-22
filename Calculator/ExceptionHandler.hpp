@@ -23,6 +23,7 @@ private:
     int errType;
     std::string op;
 public:
+    ParserException(int et);
     ParserException(int et, std::string s);
     std::string returnMessage();
 };
