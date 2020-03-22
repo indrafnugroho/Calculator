@@ -2,6 +2,7 @@
 #define _EXPRESSION_HPP_
 
 #include <cmath>
+#include "ExceptionHandler.hpp"
 
 template <class T>
 class Expression {
@@ -87,7 +88,7 @@ class DivisionExpression : public BinaryExpression<float> {
             }
             else{
                 
-                throw "Division by 0";
+                throw new ExpressionException();
             }
         }
 };

@@ -3,7 +3,7 @@
 std::string CalcMemory::str = "";
 std::queue <std::string> CalcMemory::q;
 std::string CalcMemory::lastMR = "";
-int CalcMemory::ans = 1000000;
+float CalcMemory::ans = 1000000;
 bool CalcMemory::isAnsFilled = false;
 
 std::string CalcMemory::getStr() {
@@ -14,7 +14,7 @@ std::string CalcMemory::getLastMR() {
 	return lastMR;
 }
 
-int CalcMemory::getAns() {
+float CalcMemory::getAns() {
 	return ans;
 }
 
@@ -30,7 +30,7 @@ void CalcMemory::setLastMR(std::string s) {
 	lastMR = s;
 }
 
-void CalcMemory::setAns(int a) {
+void CalcMemory::setAns(float a) {
 	ans = a;
 }
 

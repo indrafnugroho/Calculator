@@ -10,18 +10,18 @@ private:
 	static std::string str;
 	static std::queue <std::string> q;
 	static std::string lastMR;
-	static int ans;
+	static float ans;
 	static bool isAnsFilled;
 
 public:
 	std::string getStr();
 	std::string getLastMR();
-	int getAns();
+	float getAns();
 	bool getIsAnsFilled();
 
 	void setStr(std::string s);
 	void setLastMR(std::string s);
-	void setAns(int a);
+	void setAns(float a);
 	void setIsAnsFilled(bool b);
 	
 	bool isQEmpty();

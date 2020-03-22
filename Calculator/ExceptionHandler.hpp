@@ -27,4 +27,8 @@ public:
     std::string returnMessage();
 };
 
+class ExpressionException : public BaseException {
+public:
+    std::string returnMessage();
+};
 #endif

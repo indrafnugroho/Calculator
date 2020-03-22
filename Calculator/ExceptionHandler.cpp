@@ -44,3 +44,7 @@ std::string ParserException::returnMessage() {
 
 	return this->errMsg;
 }
+
+std::string ExpressionException::returnMessage() {
+	return "Error: Division by 0";
+}
