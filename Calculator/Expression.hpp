@@ -3,71 +3,93 @@
 
 #include <cmath>
 
+template <class T>
 class Expression {
 public:
     Expression() {}
-    virtual float solve(){return 0;};
+    virtual T solve() = 0;
 };
 
-class TerminalExpression : public Expression {
+template <class T>
+class TerminalExpression : public Expression<T>{
 protected:
-    float x;
+    T x;
 public:
-    TerminalExpression(float x);
-    float solve();
+    TerminalExpression(T x){
+        this->x = x;
+    }
+    T solve(){
+        return this->x;
+    }
 };
 
-class UnaryExpression : public Expression {
+template <class T>
+class UnaryExpression : public Expression<T> {
 protected:
-    Expression* x;
+    Expression<T>* x;
 public:
-    UnaryExpression(Expression* x);
-    virtual float solve() = 0;
+    UnaryExpression(Expression<T>* x){
+        this->x = x;
+    }
+    virtual T solve() = 0;
 };
 
-class BinaryExpression : public Expression {
+template <class T>
+class BinaryExpression : public Expression<T> {
 protected:
-    Expression* x;
-    Expression* y;
+    Expression<T>* x;
+    Expression<T>* y;
 public:
-    BinaryExpression(Expression* x, Expression* y);
-    virtual float solve() = 0;
+    BinaryExpression(Expression<T>* x, Expression<T>* y){
+        this->x = x;
+        this->y = y;
+    }
+    virtual T solve() = 0;
 };
 
-class SquareRootExpression : public UnaryExpression {
+class SquareRootExpression : public UnaryExpression<float> {
     public:
-        SquareRootExpression(Expression* x);
-        float solve();
+        SquareRootExpression(Expression<float>* x) : UnaryExpression(x){}
+        float solve() {return sqrt(x->solve());}
 };
 
-class NegativeExpression : public UnaryExpression {
+class NegativeExpression : public UnaryExpression<float> {
     public:
-        NegativeExpression(Expression* x);
-        float solve();
+        NegativeExpression(Expression<float>* x) : UnaryExpression(x){}
+        float solve() {return x->solve() * -1;}
 };
 
-class AddExpression : public BinaryExpression {
+class AddExpression : public BinaryExpression<float> {
     public:
-        AddExpression(Expression* x, Expression* y);
-        float solve();
+        AddExpression(Expression<float>* x, Expression<float>* y) : BinaryExpression(x, y){}
+        float solve(){return x->solve() + y->solve();}
 };
 
-class SubstractExpression : public BinaryExpression {
+class SubstractExpression : public BinaryExpression<float> {
     public:
-        SubstractExpression(Expression* x, Expression* y);
-        float solve();
+        SubstractExpression(Expression<float>* x, Expression<float>* y) : BinaryExpression(x, y){}
+        float solve(){return x->solve() - y->solve();}
 };
 
-class MultiplicationExpression : public BinaryExpression {
+class MultiplicationExpression : public BinaryExpression<float> {
     public:
-        MultiplicationExpression(Expression* x, Expression* y);
-        float solve();
+        MultiplicationExpression(Expression<float>* x, Expression<float>* y) : BinaryExpression(x, y){}
+        float solve() {return x->solve() * y->solve();}
 };
 
-class DivisionExpression : public BinaryExpression {
+class DivisionExpression : public BinaryExpression<float> {
     public:
-        DivisionExpression(Expression* x, Expression* y);
-        float solve();
+        DivisionExpression(Expression<float>* x, Expression<float>* y) : BinaryExpression(x, y){}
+        float solve() {
+            if(y->solve() != 0){
+
+                return x->solve() / y->solve();
+            }
+            else{
+                
+                throw "Division by 0";
+            }
+        }
 };
 
 #endif

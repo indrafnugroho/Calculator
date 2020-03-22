@@ -143,7 +143,7 @@ std::string Parser :: toPostfix(std::string infix){
     std::stack<char> store;
     std::string retval;
     size_t i = 0;
-    int j, k;
+    size_t j, k;
     bool lastIsOperator;
     while (retval[0] == ' '){
         retval.erase(i, 1);
@@ -212,10 +212,10 @@ std::string Parser :: toPostfix(std::string infix){
 }
 
 float Parser :: calculate(std::string postfix){
-    std::stack<Expression*> store;
+    std::stack<Expression<float>*> store;
     //std::stack<float> store;
     size_t i = 0;
-    int j, k;
+    size_t j, k;
     //float op1, op2, tmp;
 
     while (i < postfix.size()){
@@ -226,7 +226,7 @@ float Parser :: calculate(std::string postfix){
                 i++;
                 k++;
             }
-            TerminalExpression *tmp = new TerminalExpression(std::stof(postfix.substr(j, k)));
+            TerminalExpression<float> *tmp = new TerminalExpression<float>(std::stof(postfix.substr(j, k)));
             //tmp = std::stof(postfix.substr(j, k));
             store.push(tmp);
         }
@@ -239,9 +239,9 @@ float Parser :: calculate(std::string postfix){
                 op1 = store.top();
                 store.pop();
                 store.push(op1 + op2);*/
-                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op2 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
-                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op1 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
                 AddExpression *add = new AddExpression(op1, op2);
                 store.push(add);
@@ -253,9 +253,9 @@ float Parser :: calculate(std::string postfix){
                 op1 = store.top();
                 store.pop();
                 store.push(op1 - op2);*/
-                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op2 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
-                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op1 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
                 SubstractExpression *sub = new SubstractExpression(op1, op2);
                 store.push(sub);
@@ -267,9 +267,9 @@ float Parser :: calculate(std::string postfix){
                 op1 = store.top();
                 store.pop();
                 store.push(op1 * op2);*/
-                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op2 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
-                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op1 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
                 MultiplicationExpression *mult = new MultiplicationExpression(op1, op2);
                 store.push(mult);
@@ -281,9 +281,9 @@ float Parser :: calculate(std::string postfix){
                 op1 = store.top();
                 store.pop();
                 store.push(op1 / op2);*/
-                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op2 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
-                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
+                TerminalExpression<float> *op1 = new TerminalExpression<float>(store.top()->solve());
                 store.pop();
                 DivisionExpression *divi = new DivisionExpression(op1, op2);
                 store.push(divi);
