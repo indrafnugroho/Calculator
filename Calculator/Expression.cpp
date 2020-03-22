@@ -1,10 +1,10 @@
 #include "Expression.hpp"
 
-TerminalExpression::TerminalExpression(int x) {
+TerminalExpression::TerminalExpression(float x) {
     this->x = x;
 }
 
-int TerminalExpression::solve() {
+float TerminalExpression::solve() {
     return this->x;
 }
 
@@ -25,43 +25,43 @@ BinaryExpression::BinaryExpression(Expression* x, Expression* y) {
 SquareRootExpression::SquareRootExpression(Expression* x):UnaryExpression(x){
 }
 
-int SquareRootExpression::solve() {
-    int s = sqrt(x->solve());
+float SquareRootExpression::solve() {
+    float s = sqrt(x->solve());
     return s;
 }
 
-/* NegativeExpression::NegativeExpression(Expression* x):UnaryExpression(x){
+NegativeExpression::NegativeExpression(Expression* x):UnaryExpression(x){
 }
 
-int NegativeExpression::solve() {
+float NegativeExpression::solve() {
     return x->solve() * -1;
-} */
+}
 
 AddExpression::AddExpression(Expression* x, Expression* y):BinaryExpression(x,y){
 }
 
-int AddExpression::solve() {
+float AddExpression::solve() {
     return x->solve() + y->solve();
 }
 
 SubstractExpression::SubstractExpression(Expression* x, Expression* y):BinaryExpression(x,y){
 }
 
-int SubstractExpression::solve() {
+float SubstractExpression::solve() {
     return x->solve() - y->solve();
 }
 
 MultiplicationExpression::MultiplicationExpression(Expression* x, Expression* y):BinaryExpression(x,y){
 }
 
-int MultiplicationExpression::solve() {
+float MultiplicationExpression::solve() {
     return x->solve() * y->solve();
 }
 
 DivisionExpression::DivisionExpression(Expression* x, Expression* y):BinaryExpression(x,y){
 }
 
-int DivisionExpression::solve() {
+float DivisionExpression::solve() {
     if (y->solve() != 0){
         return x->solve() / y->solve();
     } else {
