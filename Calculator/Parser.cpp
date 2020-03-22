@@ -51,12 +51,12 @@ bool Parser :: validate(std::string input){
         }
         else if (input[i] == '-'){
             
-            if(i == 0){
-                startsWithMin = true;
-            }
-
             if(startsWithMin){
                 throw new ParserException(2,"-");
+            }
+
+            if(i == 0){
+                startsWithMin = true;
             }
 
             if(previousIsSquareRoot){
@@ -135,7 +135,7 @@ std::string Parser :: minusConversion(std::string input){
         if (retval[i] == '-'){
 
             if (i == 0){
-                retval.replace(i, 1, "n ");
+                retval.replace(i, 1, "n");
             }
             else if (i >= 3){
 
@@ -144,6 +144,9 @@ std::string Parser :: minusConversion(std::string input){
                 }
                 else if (retval[i - 3] == '+'){
                     retval.replace(i - 3, 4, "-");
+                }
+                else if (retval[i - 3] == 'x' || retval[i - 3] == ':'){
+                    retval.replace(i, 1, "n");
                 }
             }
         }
