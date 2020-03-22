@@ -13,5 +13,7 @@ Program ini dibuat dan dikompilasi dengan menggunakan Visual Studio dengan bahas
 
 ### Building and Running the Program
 * Buka Visual Studio, klik Open a project or solution dan pilih Calculator.sln yang ada di folder Calculator. Atau bisa juga ke direktori Calculator, klik kiri pada Calculator.sln, pilih Open with dan pilih Visual Studio.
+* Tekan tab Project, lalu tekan Calculator Properties.
+* Tekan opsi Linker yang ada di sebelah kiri properties, kemudian tekan System. Set SubSystem menjadi Windows (/SUBSYSTEM:WINDOWS). Setelah itu tekan Advanced lalu ketik "main" tanpa tanda kutip pada box Entry Point
 * Di pojok kanan ada tombol Solution Explorer, klik tombol tersebut. Jika tidak ada tombol Solution Explorer di pojok kanan, klik View -> Solution Explorer. Akan muncul tab kecil disebelah kanan, ubah view menjadi Folder view dengan tombol Switch views, lalu buka GUI.cpp
 * Di bagian atas akan ada tombol play berwarna hijau, klik tombol tersebut untuk mem-build dan run aplikasi
