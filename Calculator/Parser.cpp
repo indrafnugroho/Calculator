@@ -1,6 +1,7 @@
 #include <stack>
 #include <string>
 #include <cmath>
+#include <iostream>
 #include "Parser.hpp"
 
 //using namespace std;
@@ -120,7 +121,7 @@ std::string Parser :: minusConversion(std::string input){
         if (retval[i] == '-'){
 
             if (i == 0){
-                retval.replace(i, 1, "n");
+                retval.replace(i, 1, "n ");
             }
             else if (i >= 3){
 
@@ -211,11 +212,11 @@ std::string Parser :: toPostfix(std::string infix){
 }
 
 float Parser :: calculate(std::string postfix){
-    //stack<Expression> store;
-    std::stack<float> store;
+    std::stack<Expression*> store;
+    //std::stack<float> store;
     size_t i = 0;
     int j, k;
-    float op1, op2, tmp;
+    //float op1, op2, tmp;
 
     while (i < postfix.size()){
         if (postfix[i] == '0' || postfix[i] == '1' || postfix[i] == '2' || postfix[i] == '3' || postfix[i] == '4' || postfix[i] == '5' || postfix[i] == '6' || postfix[i] == '7' || postfix[i] == '8' || postfix[i] == '9'){
@@ -225,89 +226,92 @@ float Parser :: calculate(std::string postfix){
                 i++;
                 k++;
             }
-            //TerminalExpression temp(stoi(postfix.substr(j, k)));
-            tmp = std::stof(postfix.substr(j, k));
+            TerminalExpression *tmp = new TerminalExpression(std::stof(postfix.substr(j, k)));
+            //tmp = std::stof(postfix.substr(j, k));
             store.push(tmp);
         }
         else{
 
             if (postfix[i] == '+'){
                 
-                op2 = store.top();
+                /*op2 = store.top();
                 store.pop();
                 op1 = store.top();
                 store.pop();
-                store.push(op1 + op2);
-                /*currTop = store.top().solve();
+                store.push(op1 + op2);*/
+                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                TerminalExpression temp(currTop);
-                AddExpression add(&temp, &store.top());
+                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                store.push(add);*/
+                AddExpression *add = new AddExpression(op1, op2);
+                store.push(add);
             }
             else if (postfix[i] == '-'){
 
-                op2 = store.top();
+                /*op2 = store.top();
                 store.pop();
                 op1 = store.top();
                 store.pop();
-                store.push(op1 - op2);
-                /*currTop = store.top().solve();
+                store.push(op1 - op2);*/
+                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                TerminalExpression temp(currTop);
-                SubstractExpression sub(&temp, &store.top());
+                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                store.push(sub);*/
+                SubstractExpression *sub = new SubstractExpression(op1, op2);
+                store.push(sub);
             }
             else if (postfix[i] == 'x'){
 
-                op2 = store.top();
+                /*op2 = store.top();
                 store.pop();
                 op1 = store.top();
                 store.pop();
-                store.push(op1 * op2);
-                /*currTop = store.top().solve();
+                store.push(op1 * op2);*/
+                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                TerminalExpression temp(currTop);
-                MultiplicationExpression mult(&temp, &store.top());
+                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                store.push(mult);*/
+                MultiplicationExpression *mult = new MultiplicationExpression(op1, op2);
+                store.push(mult);
             }
             else if (postfix[i] == ':'){
 
-                op2 = store.top();
+                /*op2 = store.top();
                 store.pop();
                 op1 = store.top();
                 store.pop();
-                store.push(op1 / op2);
-                /*currTop = store.top().solve();
+                store.push(op1 / op2);*/
+                TerminalExpression *op2 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                TerminalExpression temp(currTop);
-                DivisionExpression divi(&temp, &store.top());
+                TerminalExpression *op1 = new TerminalExpression(store.top()->solve());
                 store.pop();
-                store.push(divi);*/
+                DivisionExpression *divi = new DivisionExpression(op1, op2);
+                store.push(divi);
             }
             else if (postfix[i] == 's'){
 
-                op1 = store.top();
+                /*op1 = store.top();
                 store.pop();
                 tmp = sqrt(op1);
-                store.push(tmp);
-                /*SquareRootExpression sq(&store.top());
+                store.push(tmp);*/
+                SquareRootExpression *sq = new SquareRootExpression(store.top());
                 store.pop();
-                store.push(sq);*/
+                store.push(sq);
             }
             else if (postfix[i] == 'n'){
 
-                op1 = store.top();
+                /*op1 = store.top();
                 store.pop();
-                store.push((-1) * op1);
+                store.push((-1) * op1);*/
+                NegativeExpression *n = new NegativeExpression(store.top());
+                store.pop();
+                store.push(n);
             }
         }
         
         i++;
     }
 
-    return store.top();
+    return store.top()->solve();
     //return store.top().solve();
 }

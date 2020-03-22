@@ -6,15 +6,15 @@
 class Expression {
 public:
     Expression() {}
-    virtual int solve() = 0;
+    virtual float solve(){return 0;};
 };
 
 class TerminalExpression : public Expression {
 protected:
-    int x;
+    float x;
 public:
-    TerminalExpression(int x);
-    int solve();
+    TerminalExpression(float x);
+    float solve();
 };
 
 class UnaryExpression : public Expression {
@@ -22,7 +22,7 @@ protected:
     Expression* x;
 public:
     UnaryExpression(Expression* x);
-    virtual int solve() = 0;
+    virtual float solve() = 0;
 };
 
 class BinaryExpression : public Expression {
@@ -31,43 +31,43 @@ protected:
     Expression* y;
 public:
     BinaryExpression(Expression* x, Expression* y);
-    virtual int solve() = 0;
+    virtual float solve() = 0;
 };
 
 class SquareRootExpression : public UnaryExpression {
     public:
         SquareRootExpression(Expression* x);
-        int solve();
+        float solve();
 };
 
-/* class NegativeExpression : public UnaryExpression {
+class NegativeExpression : public UnaryExpression {
     public:
         NegativeExpression(Expression* x);
-        int solve();
-}; */
+        float solve();
+};
 
 class AddExpression : public BinaryExpression {
     public:
         AddExpression(Expression* x, Expression* y);
-        int solve();
+        float solve();
 };
 
 class SubstractExpression : public BinaryExpression {
     public:
         SubstractExpression(Expression* x, Expression* y);
-        int solve();
+        float solve();
 };
 
 class MultiplicationExpression : public BinaryExpression {
     public:
         MultiplicationExpression(Expression* x, Expression* y);
-        int solve();
+        float solve();
 };
 
 class DivisionExpression : public BinaryExpression {
     public:
         DivisionExpression(Expression* x, Expression* y);
-        int solve();
+        float solve();
 };
 
 #endif
