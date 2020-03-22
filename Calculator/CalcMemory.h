@@ -6,19 +6,30 @@
 
 #pragma once
 class CalcMemory {
-public:
+private:
+	static std::string str;
 	static std::queue <std::string> q;
+	static std::string lastMR;
 	static int ans;
 	static bool isAnsFilled;
-	static bool isQFilled;
-	static std::string lastMR;
 
-	CalcMemory();
+public:
+	std::string getStr();
+	std::string getLastMR();
+	int getAns();
+	bool getIsAnsFilled();
+
+	void setStr(std::string s);
+	void setLastMR(std::string s);
+	void setAns(int a);
+	void setIsAnsFilled(bool b);
 	
-	static void emptyQueue();
-	static void mcPressed(std::string s);
-	static void mrPressed();
-	static void clearPressed();
+	bool isQEmpty();
+	void concatStr(std::string s);
+	void popBackStr();
+	void emptyQueue();
+	void pushQ(std::string s);
+	std::string popQ();
 };
 
 #endif

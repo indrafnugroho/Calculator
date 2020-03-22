@@ -1,74 +1,70 @@
 #include "CalcButton.h"
 
-std::string CalcButton::str = "";
 Parser p;
-
-CalcButton::CalcButton() {
-}
-
-void CalcButton::concatStr(std::string s) {
-	str += s;
-}
+CalcMemory m;
 
 void CalcButton::processNum(std::string num) {
-	concatStr(num);
+	m.concatStr(num);
 }
+
 void CalcButton::processOprNDot(std::string s) {
 	if (s.compare(".") == 0) {
-		concatStr(s);
+		m.concatStr(s);
 	}
 	else {
-		concatStr(" ");
-		concatStr(s);
-		concatStr(" ");
+		m.concatStr(" ");
+		m.concatStr(s);
+		m.concatStr(" ");
 	}
 }
+
 void CalcButton::processMC() {
 	//assume when user press mc, user already press result button
-	CalcMemory::mcPressed(std::to_string(CalcMemory::ans));
+	m.pushQ(m.getStr());
 }
+
 void CalcButton::processMR() {
-	if (CalcMemory::isQFilled) {
-		CalcMemory::mrPressed();
-		concatStr(CalcMemory::lastMR);
+	if (!m.isQEmpty()) {
+		m.setLastMR(m.popQ());
+		m.concatStr(m.getLastMR());			
 	}
 	else {
-
-	}
-	
+		//throw exception
+	}	
 }
+
 void CalcButton::processClear() {
-	str = "";
-	CalcMemory::clearPressed();
+	m.setStr("");
+	m.setAns(1000000);
+	m.setIsAnsFilled(false);
+	m.emptyQueue();
+	m.setLastMR("");
 }
 
 void CalcButton::processAns() {
-	if (CalcMemory::isAnsFilled) {
-		concatStr(std::to_string(CalcMemory::ans));
+	if (m.getIsAnsFilled()) {
+		m.concatStr(std::to_string(m.getAns()));
 	}
 	else {
-
+		//throw exception
 	}
 }
 
 void CalcButton::processRes() {
-	CalcMemory::isAnsFilled = true;
+	m.setIsAnsFilled(true);
 	std::string res;
-	if (p.validate(str)) {
-		res = p.minusConversion(str);
+	if (p.validate(m.getStr())) {
+		res = p.minusConversion(m.getStr());
 		res = p.toPostfix(res);
-		CalcMemory::ans = p.calculate(res);
-		str = std::to_string(CalcMemory::ans);
-	}
-	else {
-
+		m.setAns(p.calculate(res));
+		m.setStr(std::to_string(m.getAns()));
 	}
 }
 
 void CalcButton::processAC() {
-	str = "";
+	m.setStr("");
 }
 
 void CalcButton::processDel() {
-	if (str.size() > 0) str.pop_back();
+	m.popBackStr();
 }

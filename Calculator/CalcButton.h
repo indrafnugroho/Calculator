@@ -1,23 +1,19 @@
 #ifndef _CALCBUTTON_H_
 #define _CALCBUTTON_H_
+
 #include "CalcMemory.h"
 #include "Parser.hpp"
+
 class CalcButton {
 public:
-	static std::string str;
-
-	CalcButton();
-
-	static void concatStr(std::string s);
-
-	static void processNum(std::string num);
-	static void processOprNDot(std::string s);
-	static void processMC();
-	static void processMR();
-	static void processClear();
-	static void processAns();
-	static void processRes();
-	static void processAC();
-	static void processDel();
+	void processNum(std::string num);
+	void processOprNDot(std::string s);
+	void processMC();
+	void processMR();
+	void processClear();
+	void processAns();
+	void processRes();
+	void processAC();
+	void processDel();
 };
 #endif

@@ -1,36 +1,66 @@
 #include "CalcMemory.h"
 
+std::string CalcMemory::str = "";
 std::queue <std::string> CalcMemory::q;
+std::string CalcMemory::lastMR = "";
 int CalcMemory::ans = 1000000;
 bool CalcMemory::isAnsFilled = false;
-bool CalcMemory::isQFilled = false;
-std::string CalcMemory::lastMR = "";
 
-CalcMemory::CalcMemory() {}
+std::string CalcMemory::getStr() {
+	return str;
+}
+
+std::string CalcMemory::getLastMR() {
+	return lastMR;
+}
+
+int CalcMemory::getAns() {
+	return ans;
+}
+
+bool CalcMemory::getIsAnsFilled() {
+	return isAnsFilled;
+}
+
+void CalcMemory::setStr(std::string s) {
+	str = s;
+}
+
+void CalcMemory::setLastMR(std::string s) {
+	lastMR = s;
+}
+
+void CalcMemory::setAns(int a) {
+	ans = a;
+}
+
+void CalcMemory::setIsAnsFilled(bool b) {
+	isAnsFilled = b;
+}
+
+bool CalcMemory::isQEmpty() {
+	return q.empty();
+}
+
+void CalcMemory::concatStr(std::string s) {
+	str += s;
+}
+
+void CalcMemory::popBackStr() {
+	if (str.size() > 0) str.pop_back();
+}
 
 void CalcMemory::emptyQueue() {
 	std::queue <std::string> empty;
 	std::swap(q, empty);
 }
-void CalcMemory::mcPressed(std::string s) {
-	isQFilled = true;
+
+void CalcMemory::pushQ(std::string s) {
 	q.push(s);
 }
-void CalcMemory::mrPressed() {
-	if (!q.empty()) {
-		lastMR = q.front();
-		q.pop();
 
-		if (q.empty()) isQFilled = false;
-	}
-	else {
-
-	}
-}
-void CalcMemory::clearPressed() {
-	ans = 1000000;
-	isAnsFilled = false;
-	emptyQueue();
-	isQFilled = false;
-	lastMR = "";
+std::string CalcMemory::popQ() {
+	std::string s = q.front();
+	q.pop();
+	return s;
 }

@@ -12,6 +12,11 @@ namespace Calculator {
 	/// <summary>
 	/// Summary for GUI
 	/// </summary>
+
+	//initialize object
+	CalcButton b;
+	CalcMemory m;
+
 	public ref class GUI : public System::Windows::Forms::Form
 	{
 	public:
@@ -401,71 +406,71 @@ namespace Calculator {
 #pragma endregion
 	private: System::Void num0_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "0";
-		CalcButton::processNum("0");
+		b.processNum("0");
 	}
 	private: System::Void num1_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "1";
-		CalcButton::processNum("1");
+		b.processNum("1");
 	}
 	private: System::Void num2_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "2";
-		CalcButton::processNum("2");
+		b.processNum("2");
 	}
 	private: System::Void num3_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "3";
-		CalcButton::processNum("3");
+		b.processNum("3");
 	}
 	private: System::Void num4_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "4";
-		CalcButton::processNum("4");
+		b.processNum("4");
 	}
 	private: System::Void num5_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "5";
-		CalcButton::processNum("5");
+		b.processNum("5");
 	}
 	private: System::Void num6_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "6";
-		CalcButton::processNum("6");
+		b.processNum("6");
 	}
 	private: System::Void num7_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "7";
-		CalcButton::processNum("7");
+		b.processNum("7");
 	}
 	private: System::Void num8_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "8";
-		CalcButton::processNum("8");
+		b.processNum("8");
 	}
 	private: System::Void num9_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "9";
-		CalcButton::processNum("9");
+		b.processNum("9");
 	}
 	private: System::Void ansBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "Ans";
-		CalcButton::processAns();
+		b.processAns();
 	}
 	private: System::Void multBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "x";
-		CalcButton::processOprNDot("x");
+		b.processOprNDot("x");
 	}
 	private: System::Void divBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text = textBox1->Text + "/";
-		CalcButton::processOprNDot(":");
+		b.processOprNDot(":");
 	}
 	private: System::Void plusBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "+";
-		CalcButton::processOprNDot("+");
+		b.processOprNDot("+");
 	}
 	private: System::Void subsBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "-";
-		CalcButton::processOprNDot("-");
+		b.processOprNDot("-");
 	}
 	private: System::Void dotBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += ".";
-		CalcButton::processOprNDot(".");
+		b.processOprNDot(".");
 	}
 	private: System::Void sqrtBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "s";
-		CalcButton::processOprNDot("s");
+		b.processOprNDot("s");
 	}
 
 	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -473,27 +478,27 @@ namespace Calculator {
 
 	private: System::Void clearBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text = "";
-		CalcButton::processClear();
+		b.processClear();
 	}
 	private: System::Void mcBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		CalcButton::processMC();
+		b.processMC();
 	}
 	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		CalcButton::processMR();
-		textBox1->Text += gcnew String(CalcMemory::lastMR.c_str());
-		if (!CalcMemory::isQFilled) CalcMemory::lastMR = "";
+		b.processMR();
+		textBox1->Text += gcnew String(m.getLastMR().c_str());
+		if (m.isQEmpty()) m.setLastMR("");
 	}
 	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		CalcButton::processRes();
-		textBox1->Text = gcnew String(CalcButton::str.c_str());
+		b.processRes();
+		textBox1->Text = gcnew String(m.getStr().c_str());
 	}
 	private: System::Void acBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		CalcButton::processAC();
-		textBox1->Text = gcnew String(CalcButton::str.c_str());
+		b.processAC();
+		textBox1->Text = gcnew String(m.getStr().c_str());
 	}
 	private: System::Void delBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox1->Text->Length > 0) {
-			CalcButton::processDel();
+			b.processDel();
 			textBox1->Text = textBox1->Text->Remove(textBox1->Text->Length - 1);
 			//not finished
 		}
