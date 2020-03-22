@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include "Parser.hpp"
+#include "ExceptionHandler.hpp"
 
 //using namespace std;
 
@@ -12,13 +13,16 @@ bool Parser :: validate(std::string input){
     bool previousIsOperator = true;
     bool previousIsSquareRoot = false;
     bool previousIsDot = false;
+    bool startsWithMin = false;
     int operatorCount = 0;
     int dotCount = 0;
 
+    while (input[0] == ' '){
+        input.erase(i, 1);
+    }
     if(input.size() == 0){
         throw new ParserException(1,"n");
     }
-
     while (i < input.size()){
         
         if (input[i] == '0' || input[i] == '1' || input[i] == '2' || input[i] == '3' || input[i] == '4' || input[i] == '5' || input[i] == '6' || input[i] == '7' || input[i] == '8' || input[i] == '9'){
@@ -47,6 +51,14 @@ bool Parser :: validate(std::string input){
         }
         else if (input[i] == '-'){
             
+            if(i == 0){
+                startsWithMin = true;
+            }
+
+            if(startsWithMin){
+                throw new ParserException(2,"-");
+            }
+
             if(previousIsSquareRoot){
                 throw new ParserException(4,"n");
             }
