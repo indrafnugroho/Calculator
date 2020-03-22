@@ -486,7 +486,12 @@ namespace Calculator {
 		b.processClear();
 	}
 	private: System::Void mcBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		b.processMC();
+		try {
+			b.processMC();
+		}
+		catch (BaseException* b) {
+			textBox1->Text = gcnew String(b->returnMessage().c_str());
+		}
 	}
 	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -513,9 +518,10 @@ namespace Calculator {
 	}
 	private: System::Void delBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox1->Text->Length > 0) {
-			b.processDel();
+			char c = textBox1->Text[textBox1->Text->Length - 1];
+			if (c=='0'||c=='1'||c=='2'||c=='3'||c=='4'||c=='5'||c=='6'||c=='7'||c=='8'||c=='9') c = 'n';
+			b.processDel(c);
 			textBox1->Text = textBox1->Text->Remove(textBox1->Text->Length - 1);
-			//not finished
 		}
 	}
 };

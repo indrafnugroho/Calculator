@@ -15,6 +15,6 @@ public:
 	void processAns();
 	void processRes();
 	void processAC();
-	void processDel();
+	void processDel(char c);
 };
 #endif

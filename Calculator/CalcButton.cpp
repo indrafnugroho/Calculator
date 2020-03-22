@@ -19,8 +19,17 @@ void CalcButton::processOprNDot(std::string s) {
 }
 
 void CalcButton::processMC() {
-	//assume when user press mc, user already press result button
-	m.pushQ(m.getStr());
+	try {
+		std::string res;
+		if (p.validate(m.getStr())) {
+			res = p.minusConversion(m.getStr());
+			res = p.toPostfix(res);
+			m.pushQ(std::to_string(p.calculate(res)));
+		}
+	}
+	catch (BaseException* b) {
+		throw b;
+	}
 }
 
 void CalcButton::processMR() {
@@ -70,6 +79,11 @@ void CalcButton::processAC() {
 	m.setStr("");
 }
 
-void CalcButton::processDel() {
-	m.popBackStr();
+void CalcButton::processDel(char c) {
+	if (c == 'n' || c == '.') m.popBackStr();
+	else {
+		for (int i = 0; i < 3; i++) {
+			m.popBackStr();
+		}
+	}
 }
