@@ -3,6 +3,7 @@
 
 #include "CalcMemory.h"
 #include "Parser.hpp"
+#include "ExceptionHandler.hpp"
 
 class CalcButton {
 public:

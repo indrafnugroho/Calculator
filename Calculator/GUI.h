@@ -445,8 +445,13 @@ namespace Calculator {
 		b.processNum("9");
 	}
 	private: System::Void ansBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		textBox1->Text += "Ans";
-		b.processAns();
+		try {
+			textBox1->Text += "Ans";
+			b.processAns();
+		}
+		catch (BaseException* b) {
+			textBox1->Text = gcnew String(b->returnMessage().c_str());
+		}
 	}
 	private: System::Void multBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text += "x";
@@ -484,13 +489,23 @@ namespace Calculator {
 		b.processMC();
 	}
 	private: System::Void mrBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		b.processMR();
-		textBox1->Text += gcnew String(m.getLastMR().c_str());
-		if (m.isQEmpty()) m.setLastMR("");
+		try {
+			b.processMR();
+			textBox1->Text += gcnew String(m.getLastMR().c_str());
+		}
+		catch (BaseException* b) {
+			textBox1->Text = gcnew String(b->returnMessage().c_str());
+		}
+		//if (m.isQEmpty()) m.setLastMR("");
 	}
 	private: System::Void resBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		b.processRes();
-		textBox1->Text = gcnew String(m.getStr().c_str());
+		try {
+			b.processRes();
+			textBox1->Text = gcnew String(m.getStr().c_str());
+		}
+		catch (BaseException* b) {
+			textBox1->Text = gcnew String(b->returnMessage().c_str());
+		}
 	}
 	private: System::Void acBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		b.processAC();

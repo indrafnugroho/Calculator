@@ -16,7 +16,7 @@ bool Parser :: validate(std::string input){
     int dotCount = 0;
 
     if(input.size() == 0){
-        throw "Error : Empty Expression";
+        throw new ParserException(1,"n");
     }
 
     while (i < input.size()){
@@ -29,13 +29,15 @@ bool Parser :: validate(std::string input){
             operatorCount = 0;
         }
         else if (input[i] == '+' || input[i] == 'x' || input[i] == ':'){
-            
+            std::string s;
             if(previousIsOperator || previousIsSquareRoot){
-                throw "Error : Expected operand, got operator " + input[i];
+                s += input[i];
+                throw new ParserException(2,s);
             }
 
             if(previousIsDot){
-                throw "Error : Expected number after \".\", got operator " + input[i];
+                s += input[i];
+                throw new ParserException(3,s);
             }
 
             previousIsOperator = true;
@@ -46,15 +48,15 @@ bool Parser :: validate(std::string input){
         else if (input[i] == '-'){
             
             if(previousIsSquareRoot){
-                throw "Error : Square root of negative number";
+                throw new ParserException(4,"n");
             }
 
             if(previousIsDot){
-                throw "Error : Expected number after \".\", got operator -";
+                throw new ParserException(3,"-");
             }
 
             if(previousIsOperator && operatorCount > 1){
-                throw "Error : Expected operand, got operator -";
+                throw new ParserException(2,"-");
             }
 
             previousIsOperator = true;
@@ -65,7 +67,7 @@ bool Parser :: validate(std::string input){
         else if (input[i] == 's'){
                      
             if (previousIsDot){
-                throw "Error : Expected number after \".\", got square root";
+                throw new ParserException(3,"square root");
             }
 
             previousIsSquareRoot = true;
@@ -74,11 +76,11 @@ bool Parser :: validate(std::string input){
         else if (input[i] == '.'){
             
             if(previousIsOperator || previousIsSquareRoot){
-                throw "Error : Expected operand got .";
+                throw new ParserException(2,".");
             }
 
             if (dotCount >= 1){
-                throw "Error : Too many .";
+                throw new ParserException(5,"n");
             }
 
             previousIsDot = true;

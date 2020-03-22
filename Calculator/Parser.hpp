@@ -2,6 +2,7 @@
 #define _PARSER_HPP_
 
 #include "Expression.hpp"
+#include "ExceptionHandler.hpp"
 //using namespace std;
 
 class Parser{

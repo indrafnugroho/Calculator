@@ -29,7 +29,7 @@ void CalcButton::processMR() {
 		m.concatStr(m.getLastMR());			
 	}
 	else {
-		//throw exception
+		throw new MemoryException("Queue");
 	}	
 }
 
@@ -46,18 +46,23 @@ void CalcButton::processAns() {
 		m.concatStr(std::to_string(m.getAns()));
 	}
 	else {
-		//throw exception
+		throw new MemoryException("Ans");
 	}
 }
 
 void CalcButton::processRes() {
-	m.setIsAnsFilled(true);
-	std::string res;
-	if (p.validate(m.getStr())) {
-		res = p.minusConversion(m.getStr());
-		res = p.toPostfix(res);
-		m.setAns(p.calculate(res));
-		m.setStr(std::to_string(m.getAns()));
+	try {
+		m.setIsAnsFilled(true);
+		std::string res;
+		if (p.validate(m.getStr())) {
+			res = p.minusConversion(m.getStr());
+			res = p.toPostfix(res);
+			m.setAns(p.calculate(res));
+			m.setStr(std::to_string(m.getAns()));
+		}
+	}
+	catch (BaseException* b) {
+		throw b;
 	}
 }
 

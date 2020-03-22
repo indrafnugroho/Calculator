@@ -122,11 +122,13 @@
   <ItemGroup>
     <ClCompile Include="CalcButton.cpp" />
     <ClCompile Include="CalcMemory.cpp" />
+    <ClCompile Include="ExceptionHandler.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ExceptionHandler.hpp" />
     <ClInclude Include="CalcButton.h" />
     <ClInclude Include="CalcMemory.h" />
     <ClInclude Include="Expression.hpp" />
