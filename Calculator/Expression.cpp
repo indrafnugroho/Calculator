@@ -9,7 +9,7 @@ float TerminalExpression::solve() {
 }
 
 UnaryExpression::UnaryExpression(Expression* x) {
-    if (x->solve >= 0) {
+    if (x->solve() >= 0) {
         this->x = x;
     } else {
         throw x;
