@@ -21,7 +21,7 @@ bool Parser :: validate(std::string input){
         input.erase(i, 1);
     }
     if(input.size() == 0){
-        throw new ParserException(1,"n");
+        throw new ParserException(1);
     }
     while (i < input.size()){
         
@@ -60,7 +60,7 @@ bool Parser :: validate(std::string input){
             }
 
             if(previousIsSquareRoot){
-                throw new ParserException(4,"n");
+                throw new ParserException(4);
             }
 
             if(previousIsDot){
@@ -92,7 +92,7 @@ bool Parser :: validate(std::string input){
             }
 
             if (dotCount >= 1){
-                throw new ParserException(5,"n");
+                throw new ParserException(5);
             }
 
             previousIsDot = true;

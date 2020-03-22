@@ -8,6 +8,12 @@ std::string MemoryException::returnMessage() {
 	return ("Error: " + this->memoryType + " is empty");
 }
 
+ParserException::ParserException(int et) {
+	this->errMsg = "";
+	this->errType = et;
+	this->op = "";
+}
+
 ParserException::ParserException(int et, std::string s) {
 	this->errMsg = "";
 	this->errType = et;
