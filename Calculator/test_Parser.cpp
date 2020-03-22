@@ -1,29 +1,38 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "Parser.hpp"
-#include "Expression.hpp"
 using namespace std;
 
 int main(){
+    // Perlu object code Parser dan ExceptionHandler untuk di compile
     Parser p;
-    string a = "-1 + 2 - 3 + 4 - 5"; // Ubah ubah input aja disini, aku mager pake cin
-    // cin >> a;
+    string a; 
+    bool status = false;
+    cout << "Input expression, jika ingin menulis operator, beri spasi pada kedua sisi\nContoh : 1 + 1, 1 -  - 1, dll\nOperator valid = {+, -, x, :, s} s = square root" << endl; 
+    getline(cin, a);
 
-    /*int i = 0;
-    int j, k;
-    while (i < a.size()){
-        if (a[i] == 's'){
-            if (a[i - 2] == '1' || a[i - 2] == '3'){
-                a.insert(i, "x ");
-            }
-        }
+    cout << "**********Uji coba validate**********" << endl;
+    try{
+        status = p.validate(a);
+    }
+    catch(...){
+        cout << "Input invalid\nminusConversion, toPostfix, dan calculate memerlukan input valid agar dapat diuji coba" << endl;
+    }
 
-        i++;
-    }*/
-    string b = p.minusConversion(a);
-    cout << b << endl;
-    string c = p.toPostfix(b);
-    cout << c << endl;
-    cout << p.calculate(c) << endl;
+    if(status){
+
+        cout << "Input valid" << endl;
+        cout << "\n**********Uji coba minusConversion**********" << endl;
+        a = p.minusConversion(a);
+        cout << "Hasil : " << a << endl;
+
+        cout << "\n**********Uji coba toPostfix**********" << endl;
+        a = p.toPostfix(a);
+        cout << "Hasil : " << a << endl;
+
+        cout << "\n**********Uji coba calculate**********" << endl;
+        cout << "Hasil : " << p.calculate(a) << endl;
+    }
     return 0;
 }
